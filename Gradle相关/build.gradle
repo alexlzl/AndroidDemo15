@@ -1,0 +1,91 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'key0'
+            keyPassword '123456'
+            storeFile file('C:/Users/liuzhouliang.DS/Desktop/key/key1/key1.jks')
+            storePassword '123456'
+        }
+        config1 {
+            keyAlias 'key2'
+            keyPassword '123456'
+            storeFile file('C:/Users/liuzhouliang.DS/Desktop/key/key2/key2.jks')
+            storePassword '123456'
+        }
+    }
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.example.liuzhouliang.demo8"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        flavorDimensions "versionCode"
+    }
+    buildTypes {
+        release {
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config1
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+//            def today = new Date()
+//            if (variant.buildType.getName().equals("release")) {
+//                println "Change output apk name"
+//                variant.outputs.each { output ->
+//                    output.outputFile = new File(
+//                            output.outputFile.parent,
+//                            output.outputFile.name.replace(".apk", "-" + defaultConfig.versionName + "-" + today.format('yyyyMMdd') + ".apk"))
+//                }
+//            }
+
+        }
+
+        buildTypes3 {
+
+        }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+    /**
+     * Gradle的Android插件中有个BuildVariants的概念，其实简单来说其实就是buildTypes＋productFlavors，buildType前面我们看到过了，主要就是debug和release的分别。而productFlavors就是我们用来打包不同版本app的主要方式。从字面意思来翻译指的就是不同的“产品特点”。
+     */
+    productFlavors {
+        flavors1 {
+            applicationId "me.zheteng.android.example.googleplay"
+        }
+        flavors2 {}
+        flavors3 {}
+
+//        kuan {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "kuan"]
+//        }
+//        xiaomi {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+//        }
+//        qh360 {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "qh360"]
+//        }
+//        baidu {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
+//        }
+//        wandoujia {
+//            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+//        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
