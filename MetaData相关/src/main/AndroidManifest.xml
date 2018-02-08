@@ -13,7 +13,11 @@
         <!--application 节点 metadata 测试-->
         <meta-data
             android:name="application_meta"
-            android:value="application_meta" />
+            android:value="来自application_meta" />
+
+        <meta-data
+            android:name="application_meta_res"
+            android:resource="@array/meta_array" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -21,6 +25,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="activity_meta"
+                android:value="来自activity_meta" />
         </activity>
     </application>
 

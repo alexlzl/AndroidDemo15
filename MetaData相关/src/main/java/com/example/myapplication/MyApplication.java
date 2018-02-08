@@ -17,14 +17,15 @@ import android.util.Log;
  */
 
 public class MyApplication extends Application {
-    private static final String TAG="application";
+    private static final String TAG = "application";
+
     @Override
     public void onCreate() {
         super.onCreate();
         /**
          * 测试Application节点的metadata数据
          */
-
+        //获取meta中字符串====================1
         ApplicationInfo appInfo = null;
         try {
             appInfo = this.getPackageManager()
@@ -34,6 +35,12 @@ public class MyApplication extends Application {
         }
         Bundle bundle = appInfo.metaData;
         Log.e(TAG, "bundle.getString(jerey) : " + bundle.getString("application_meta"));
+        //获取meta中的数组======================2
+        int id = bundle.getInt("application_meta_res");
+        String[] metaString = getResources().getStringArray(id);
+        for (int i = 0; i < metaString.length; i++) {
+            Log.e(TAG, "获取meta中数组: " + metaString[i]);
+        }
 
 
     }
