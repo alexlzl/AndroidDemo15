@@ -16,6 +16,34 @@ import android.widget.TextView;
  * ComponentName cn = new ComponentName(context, ×××Receiver.class);
  * ActivityInfo info = context.getPackageManager().getReceiverInfo(cn, PackageManager.GET_META_DATA);
  * info.metaData.getString("meta_name");
+ * <p>
+ * 3：在service应用<meta-data>元素。
+ * xml代码段：
+ * <service android:name="MetaDataService">
+ * <meta-data android:value="hello my service" android:name="data_Name"></meta-data>
+ * </service>
+ * <p>
+ * java代码段：
+ * ComponentName cn=new ComponentName(this, MetaDataService.class);
+ * ServiceInfo info=this.getPackageManager()
+ * .getServiceInfo(cn, PackageManager.GET_META_DATA);
+ * String msg=info.metaData.getString("data_Name");
+ * Log.d(TAG, " msg == " + msg );
+ * <p>
+ * 4: 在receiver应用<meta-data>元素。
+ * xml代码段:
+ * <receiver android:name="MetaDataReceiver">
+ * <meta-data android:value="hello my receiver" android:name="data_Name"></meta-data>
+ * <intent-filter>
+ * <action android:name="android.intent.action.PHONE_STATE"></action>
+ * </intent-filter>
+ * </receiver>
+ * java代码段：
+ * ComponentName cn=new ComponentName(context, MetaDataReceiver.class);
+ * ActivityInfo info=context.getPackageManager()
+ * .getReceiverInfo(cn, PackageManager.GET_META_DATA);
+ * String msg=info.metaData.getString("data_Name");
+ * Log.d(TAG, " msg == " + msg );
  */
 public class MainActivity extends AppCompatActivity {
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication">
-
+    <!--http://blog.csdn.net/janice0529/article/details/41583587-->
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -14,7 +14,7 @@
         <meta-data
             android:name="application_meta"
             android:value="来自application_meta" />
-
+        <!--一般的值可以通过value属性来指定，但是如果要指定一个资源的id,则需要使用resource属性来配置-->
         <meta-data
             android:name="application_meta_res"
             android:resource="@array/meta_array" />
@@ -29,6 +29,8 @@
                 android:name="activity_meta"
                 android:value="来自activity_meta" />
         </activity>
+
+
     </application>
 
 </manifest>
