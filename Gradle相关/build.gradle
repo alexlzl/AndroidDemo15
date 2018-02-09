@@ -24,10 +24,12 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         flavorDimensions "versionCode"
+        resConfigs "hdpi"  //打包的时候只保留 drawable-xhdpi 文件夹里面的资源,resConfigs ： 过滤 drawable文件夹的资源
     }
     buildTypes {
         release {
-
+            buildConfigField "String","NAME","\"namet\""
+            buildConfigField "boolean", "LEO_DEBUG", "false"//https://www.jianshu.com/p/e1fdbe94bde3  自定义BuildConfig字段
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config1
@@ -47,10 +49,16 @@ android {
         }
 
         buildTypes3 {
-
+            buildConfigField "String","NAME","\"buildT\""
+            buildConfigField "boolean", "LEO_DEBUG", "false"
+            signingConfig signingConfigs.config
         }
         debug {
+            buildConfigField "String","NAME","\"tttt\""
             signingConfig signingConfigs.config
+            buildConfigField "String", "API_ENV", "\"http://yiba.com\""  //自定义String属性
+            // 不显示Log, 在java代码中的调用方式为：BuildConfig.LOG_DEBUG
+            buildConfigField "boolean", "LEO_DEBUG", "true"
         }
     }
     /**

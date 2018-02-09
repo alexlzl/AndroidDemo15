@@ -1,20 +1,23 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
+/**
+ * 用于配置构建脚本所用到的代码库和依赖关系
+ */
 buildscript {
-    
+
     repositories {
         google()
         jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
-        
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
-
+/**
+ * 用于定义所有模块需要用到的一些公共属性。
+ */
 allprojects {
     repositories {
         google()
@@ -25,3 +28,5 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+
