@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
-//apply plugin: com.plugin.second.SecondPlugin
-//使用自定义gradle插件
+//使用自定义gradle插件===1
+apply plugin: com.plugin.second.SecondPlugin
+//使用自定义gradle插件===2
 apply plugin: 'com.lzl.gradle'
 android {
     compileSdkVersion 26
