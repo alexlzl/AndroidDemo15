@@ -34,5 +34,5 @@ task clean(type: Delete) {
 }
 //com.hc.gradle为resources/META-INF/gradle-plugins
 //下的properties文件名称
-apply plugin: 'com.lzl.gradle'
+//apply plugin: 'com.lzl.gradle'
 
