@@ -1,1 +1,1 @@
-include ':Gradle相关', ':MetaData相关'
+include ':Gradle相关', ':MetaData相关', ':GradlePlugin', ':TestGradlePlugin', ':BuildSrc'

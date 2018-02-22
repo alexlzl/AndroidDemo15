@@ -8,8 +8,11 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/BuildSrc" />
+            <option value="$PROJECT_DIR$/GradlePlugin" />
             <option value="$PROJECT_DIR$/Gradle相关" />
             <option value="$PROJECT_DIR$/MetaData相关" />
+            <option value="$PROJECT_DIR$/TestGradlePlugin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

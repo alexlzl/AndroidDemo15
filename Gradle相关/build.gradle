@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
-
+def keyStorePFile=rootProject.file("keystore.properties")
+def keyP=new Properties()
 android {
     signingConfigs {
         config {
