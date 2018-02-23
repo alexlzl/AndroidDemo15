@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 //使用自定义gradle插件===1  该形式下使用插件定义插件需在buildSrc名称的目录下才能被识别
 apply plugin: com.plugin.second.SecondPlugin
-//使用自定义gradle插件===2
+//使用自定义gradle插件===2  其中plugin的名字，就是前面GradlePlugin工程创建com.lzl.gradle.properties中的名字——com.lzl.gradle，通过这种方式，就加载了自定义的插件
 apply plugin: 'com.lzl.gradle'
 
 //apply plugin: com.lzl.plugin.MyPlugin
@@ -39,4 +39,11 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
+}
+/**
+ * 配置Extension
+ * 在主项目的build.gradle文件中，通过如下所示的代码来加载Extension：
+ */
+ExtensionBuildSrc {
+    message = '通过Extension 向gradle插件传递参数===='
 }
