@@ -11,9 +11,13 @@ dependencies {
 repositories {
     mavenCentral()
 }
-
-group='com.group.plugin'
-version='1.0.0'
+/**
+ * 因为是通过自定义Module来创建插件的，因此，不能让Gradle来自动完成插件的加载，需要手动进行部署，所以，需要在插件的build.gradle脚本中增加Maven的配置，脚本如下所示：
+ *
+ * 相比buildSrc中的build.gradle脚本，这里增加了Maven的支持和uploadArchives这样一个Task，这个Task的作用就是将该Module部署到本地的repo目录下。在终端中执行gradle uploadArchives指令，将插件部署到repo目录下
+ */
+group = 'com.group.plugin'
+version = '1.0.0'
 
 uploadArchives {
     repositories {

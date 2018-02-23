@@ -7,6 +7,9 @@ buildscript {
     repositories {
         google()
         jcenter()
+        /**
+         * 在buildSrc中，系统自动帮开发者自定义的插件提供了引用支持，但自定义Module的插件中，开发者就需要自己来添加自定义插件的引用支持。在主项目的build.gradle文件中，添加如下所示的脚本：
+         */
         maven {//本地Maven仓库地址
             url uri('D:/repos')
         }
