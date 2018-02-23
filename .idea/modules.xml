@@ -4,10 +4,11 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BuildSrc/BuildSrc.iml" filepath="$PROJECT_DIR$/BuildSrc/BuildSrc.iml" />
       <module fileurl="file://$PROJECT_DIR$/Demo8.iml" filepath="$PROJECT_DIR$/Demo8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BuildSr/Demo8-BuildSr.iml" filepath="$PROJECT_DIR$/BuildSr/Demo8-BuildSr.iml" />
       <module fileurl="file://$PROJECT_DIR$/GradlePlugin/GradlePlugin.iml" filepath="$PROJECT_DIR$/GradlePlugin/GradlePlugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/Gradle相关/Gradle相关.iml" filepath="$PROJECT_DIR$/Gradle相关/Gradle相关.iml" />
       <module fileurl="file://$PROJECT_DIR$/MetaData相关/MetaData相关.iml" filepath="$PROJECT_DIR$/MetaData相关/MetaData相关.iml" />
-      <module fileurl="file://$PROJECT_DIR$/TestGradlePlugin/TestGradlePlugin.iml" filepath="$PROJECT_DIR$/TestGradlePlugin/TestGradlePlugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/自定义GradlePlugin/TestGradlePlugin.iml" filepath="$PROJECT_DIR$/自定义GradlePlugin/TestGradlePlugin.iml" />
     </modules>
   </component>
 </project>

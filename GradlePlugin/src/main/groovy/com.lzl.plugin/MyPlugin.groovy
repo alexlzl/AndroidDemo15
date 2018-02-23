@@ -14,7 +14,7 @@ public class MyPlugin implements Plugin<Project> {
         project.task('customTask', type: CustomTask)
         project.gradle.addListener(new TimeListener())
         System.out.println("========================");
-        System.out.println("使用自定义gradle插件!");
+        System.out.println("第一种形式使用自定义gradle插件!");
         System.out.println("========================");
         project.task('testTask') << {
             System.out.println("testTask==使用自定义gradle插件!");
