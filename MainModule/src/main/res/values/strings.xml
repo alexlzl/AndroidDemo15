@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="lib_str">lib_str</string>
+    <string name="main_str">main_str</string>
+</resources>
