@@ -1,0 +1,132 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+
+
+
+    defaultConfig {
+        applicationId "com.example.myapplication"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+
+        }
+    }
+    /**
+     * 调用Project的task()方法创建Task,在使用Gradle时，
+     * 创建Task最常见的方式便是：这里的“<<”表示追加的意思，即向hello中加入执行过程。
+     * 我们还可以使用doLast来达到同样的效果：
+     */
+    task helloWorld << {
+        println "创建TASK的方式1===="
+    }
+
+    task hello2 {
+        doLast {
+            println '创建TASK的方式2===='
+        }
+    }
+    /**
+     * 另外，如果需要向Task的最前面加入执行过程，我们可以使用doFirst：
+     */
+    task hello3 {
+        doFirst {
+            println 'hello3'
+        }
+    }
+
+    task testTask << {
+        println("测试自定义task====")
+    }
+
+    task copyFile(type: Copy) {
+        println("测试task复制============")
+        from 'xml'
+        into 'destination'
+    }
+
+    /**
+     * Task之间是可以存在依赖关系，比如TaskA依赖TaskB，那么在执行TaskA时，Gradle会先执行TaskB，再执行TaskA
+     */
+    task taskA(dependsOn: copyFile) {
+        println("测试task依赖============")
+    }
+
+    /**
+     * 我们自定义的3个Task都位于TaskContainer中，Project中的tasks属性即表示该TaskContainer。为此，我们可以新建一个Task来显示这些信息：
+     */
+    task showTasks {
+        println tasks.class
+        println tasks.size()
+    }
+    /**
+     * 通过TaskContainer的create()方法创建Task
+     在上文中我们讲到，通过task()方法创建的Task都被存放在了TaskContainer中，
+     而Project又维护了一个TaskContainer类型的属性tasks，那么我们完全可以直接向TaskContainer里面添加Task。
+     查查TaskContainer的API文档可以发现，TaskContainer向我们提供了大量重载的create()方法用于添加Task。
+     */
+    tasks.create(name: 'hello4') << {
+        println 'hello4'
+    }
+
+    /**
+     * 　一个Task除了执行操作之外，还可以包含多个Property，其中有Gradle为每个Task默认定义的Property，
+     * 比如description，logger等。另外，每一个特定的Task类型还可以含有特定的Property，比如Copy的from和to等。
+     * 当然，我们还可以动态地向Task中加入额外的Property。在执行一个Task之前，我们通常都需要先设定Property的值，
+     * Gradle提供了多种方法设置Task的Property值。
+     */
+    task hello7 << {
+        description = "this is hello7"
+        println description
+    }
+    /**
+     * 我们还可以通过闭包的方式来配置一个已有的Task：
+     *
+     * 需要注意的是，对hello8的description设置发生在创建该Task之后，在执行“gradle hello8”时，命令行依然可以打印出正确的“this is hello8”，
+     * 这是因为Gradle在执行Task时分为两个阶段，首先是配置阶段，然后才是实际执行阶段。
+     * 所以在执行hello8之前，Gradle会扫描整个build.gradle文档，将hello8的description设置为“this is hello8”，
+     * 然后执行hello8，此时hello8的description已经包含了设置后的值
+     */
+    task hello8 << {
+        println description
+    }
+
+    hello8 {
+        description = "this is hello8"
+    }
+
+    /**
+     * 　我们还可以通过调用Task的configure()方法完成Property的设置：
+     */
+    task hello9 << {
+        println description
+    }
+
+    hello9.configure {
+        description = "this is hello9"
+    }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
