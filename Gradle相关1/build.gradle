@@ -144,6 +144,12 @@ android {
 //        }
 //    }
 //}
+
+/**
+ * 多次执行“gradle combineFileContentNonIncremental”时，整个Task都会反复执行，即便在第一次执行后我们已经得到了所需的结果。
+ * 如果该combineFileContentNonIncremental是一个繁重的Task，那么多次重复执行势必造成没必要的时间耗费。
+ * 这时，我们可以将sources声明为该Task的inputs，而将destination声明为outputs，重新创建一个Task如下：
+ */
 task combineFileContentIncremental {
     def sources = fileTree('sourceDir')
     def destination = file('destination.txt')
