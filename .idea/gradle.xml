@@ -8,10 +8,13 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/BuildSr" />
             <option value="$PROJECT_DIR$/BuildSrc" />
             <option value="$PROJECT_DIR$/GradlePlugin" />
             <option value="$PROJECT_DIR$/Gradle相关" />
+            <option value="$PROJECT_DIR$/Gradle相关1" />
+            <option value="$PROJECT_DIR$/MainModule" />
+            <option value="$PROJECT_DIR$/MainModuleCommon" />
+            <option value="$PROJECT_DIR$/MainModuleLib" />
             <option value="$PROJECT_DIR$/MetaData相关" />
             <option value="$PROJECT_DIR$/自定义GradlePlugin" />
           </set>

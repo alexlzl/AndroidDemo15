@@ -9,12 +9,14 @@ android {
             keyPassword '123456'
             storeFile file('C:/Users/liuzhouliang.DS/Desktop/key/key1/key1.jks')
             storePassword '123456'
+            v2SigningEnabled false
         }
         config1 {
             keyAlias 'key2'
             keyPassword '123456'
             storeFile file('C:/Users/liuzhouliang.DS/Desktop/key/key2/key2.jks')
             storePassword '123456'
+            v2SigningEnabled false
         }
     }
     compileSdkVersion 26
