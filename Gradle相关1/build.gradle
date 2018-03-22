@@ -149,6 +149,13 @@ android {
  * 多次执行“gradle combineFileContentNonIncremental”时，整个Task都会反复执行，即便在第一次执行后我们已经得到了所需的结果。
  * 如果该combineFileContentNonIncremental是一个繁重的Task，那么多次重复执行势必造成没必要的时间耗费。
  * 这时，我们可以将sources声明为该Task的inputs，而将destination声明为outputs，重新创建一个Task如下：
+ *
+ * 当首次执行combineFileContentIncremental时，Gradle会完整地执行该Task。但是紧接着再执行一次，命令行显示：
+ *
+ * 我们发现，combineFileContentIncremental被标记为UP-TO-DATE，表示该Task是最新的，Gradle将不予执行。
+ * 在实际应用中，你将遇到很多这样的情况，因为Gradle的很多插件都引入了增量式构建机制。
+ * 如果我们修改了inputs（即sourceDir文件夹）中的任何一个文件或删除掉了destination.txt，当调用“gradle combineFileContentIncremental”时，Gradle又会重新执行，
+ * 因为此时的Task已经不再是最新的了。对于outputs，我们还可以使用upToDateWhen()方法来决定一个Task的outputs是否为最新的，该方法接受一个闭包作为检查条件，感兴趣的读者可以自行了解。
  */
 task combineFileContentIncremental {
     def sources = fileTree('sourceDir')
@@ -160,6 +167,7 @@ task combineFileContentIncremental {
     outputs.file destination
 
     doLast {
+        println("测试 input=====output")
         destination.withPrintWriter {
             writer ->
                 sources.each {
