@@ -1,0 +1,86 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+
+
+
+    defaultConfig {
+        applicationId "com.example.myapplication"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+
+//单个属性的定义
+ext.age = 18
+ext.myname = "alex"
+
+//多个属性的定义
+ext {
+    sex = "man"
+    address = "beijin"
+}
+//调用属性
+task testProperties << {
+
+    println("age================" + age)
+    println("sex=======" + sex)
+}
+//创建任务=================
+
+/**
+ * 第一种方式创建TASK，调用Project的task(name)方法===================================1
+ */
+Task testTask1 = task(testTask1)
+testTask1.doLast {
+    println("定义TASK的第一种方式==================")
+}
+
+/**
+ * 第二种方式创建TASK，多了一个MAP参数，对TASK进行配置
+ */
+Task testTask2 = task(testTask2, group: BasePlugin.BUILD_GROUP)
+testTask2.doLast {
+    println("定义TASK的第二种方式==================" + testTask2.group)
+}
+
+/**
+ * 第三种是任务名+闭包的方式
+ */
+
+task testTask3 {
+    description  '测试属性description'
+    println("定义TASK的第三种方式=============" + "任务名 + 闭包的方式"+description)
+}
+
+/**
+ *第四种是tasks.create(name)
+ */
+
+tasks.create('testTask4'){
+    println("定义TASK的第四种方式=============")
+}
