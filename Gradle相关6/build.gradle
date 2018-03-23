@@ -92,3 +92,17 @@ task('testTask5').doLast {
 task('testTask6')<<{
     println("testTask6==============")
 }
+
+task('testTask7'){
+    dependsOn testTask6
+    println("testTask7==============")
+    tasks.findByName("testTask6").doLast {}
+    testTask6.doLast {
+
+    }
+}
+
+testTask6.doLast {
+
+}
+
