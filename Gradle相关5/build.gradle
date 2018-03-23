@@ -60,10 +60,9 @@ task testTask3(dependsOn :testTask2){
 }
 
 task testTask4{
-    dependsOn testTask,testTask1
+    dependsOn testTask,testTask1,testTask2
     println("测试多个task依赖=======")
 }
-
 /**
  * Project在创建task的时候把task的名字注册为Project的一个属性===============
  */
