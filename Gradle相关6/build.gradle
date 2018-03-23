@@ -84,3 +84,11 @@ task testTask3 {
 tasks.create('testTask4'){
     println("定义TASK的第四种方式=============")
 }
+
+task('testTask5').doLast {
+    println("testTask5================")
+}
+
+task('testTask6')<<{
+    println("testTask6==============")
+}

@@ -1,2 +1,2 @@
-include ':Gradle相关3'
+include ':Gradle相关3', ':Gradle相关5', ':Gradle相关6'
 include ':Gradle相关4', ':MetaData相关', ':GradlePlugin', ':自定义GradlePlugin', ':MainModule', ':MainModuleLib', ':MainModuleCommon', ':Gradle相关1', ':Gradle相关2'
