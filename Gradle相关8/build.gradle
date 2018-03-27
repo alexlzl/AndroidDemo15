@@ -39,3 +39,7 @@ ext.depss = [
         SRecyclerview        : 'com.android.support:recyclerview-v7:23.2.1']
 
 def coo=[key:'value',key1:'value1']
+
+ task('test11'){
+     println(coo.get('key')+'==========================')
+ }
