@@ -34,6 +34,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
 }
-
-ext.deps = [
+//定义集合变量
+ext.depss = [
         SRecyclerview        : 'com.android.support:recyclerview-v7:23.2.1']
+
+def coo=[key:'value',key1:'value1']
